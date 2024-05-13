@@ -16,6 +16,8 @@ goner.fun {
 
     encode gzip
     root * /usr/src/www
+    file_server
+    try_files {path} {path}/ /index.html
 
     tls {
         dns alidns {
