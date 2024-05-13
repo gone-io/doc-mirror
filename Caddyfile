@@ -1,0 +1,26 @@
+{
+debug
+
+}
+
+
+goner.fun {
+    log {
+       output file /data/log/donteatcats.world/access.log {
+            roll_size 100MiB
+            roll_local_time
+            roll_keep 10
+            roll_keep_for 2160h
+         }
+    }
+
+    encode gzip
+    root * /usr/src/www
+
+    tls {
+        dns alidns {
+            access_key_id {env.ALIYUN_ACCESS_KEY_ID}
+            access_key_secret {env.ALIYUN_ACCESS_KEY_SECRET}
+        }
+    }
+}

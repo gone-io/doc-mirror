@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  mirror:
+    build:
+      context: .
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      ALIYUN_ACCESS_KEY_ID: ${ALIYUN_ACCESS_KEY_ID}
+      ALIYUN_ACCESS_KEY_SECRET: ${ALIYUN_ACCESS_KEY_SECRET}
+
+    volumes:
+      - ./www:/usr/src/www
+      - ./log:/data/log
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./ssl:/data/caddy/certificates
